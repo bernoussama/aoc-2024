@@ -19,7 +19,6 @@ public class Main {
     int day = Integer.parseInt(args[0]);
     String file = String.format("Day%02d%s.txt", day, test.toString());
     Path filename = Paths.get(file);
-    // int day = Integer.parseInt(args[0].split("Day")[1].split(".txt")[0]);
     try {
       Day daySolver = getDay(day, filename);
       String part1 = daySolver.part1();
