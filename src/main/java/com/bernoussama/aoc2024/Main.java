@@ -3,8 +3,6 @@ package com.bernoussama.aoc2024;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.swing.JWindow;
-
 public class Main {
   // var println = System.out.println();
   public static void main(String[] args) {
