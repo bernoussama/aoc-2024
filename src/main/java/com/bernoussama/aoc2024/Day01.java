@@ -13,10 +13,10 @@ public class Day01 implements Day {
 
   public Day01(Path path) {
     try {
-      Files.lines(path).forEach((n) -> {
-        var line = n.split("   ");
-        list1.add(Integer.parseInt(line[0]));
-        list2.add(Integer.parseInt(line[1]));
+      Files.lines(path).forEach((line) -> {
+        var nums = line.split("   ");
+        list1.add(Integer.parseInt(nums[0]));
+        list2.add(Integer.parseInt(nums[1]));
       });
     } catch (IOException e) {
       System.err.println("error reading file");
