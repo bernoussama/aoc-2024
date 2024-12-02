@@ -11,7 +11,8 @@ import java.util.stream.Collectors;
 public class Day02 implements Day {
 
   private List<List<Integer>> reports = new ArrayList<>();
-  private int safe = 0;
+  private int safe1 = 0;
+  private int safe2 = 0;
 
   public Day02(Path path) {
     try {
@@ -41,14 +42,40 @@ public class Day02 implements Day {
         if (diff < 1 || diff > 3)
           return;
       }
-      safe++;
+      safe1++;
     });
-    System.out.println(reports);
-    return Integer.toString(safe);
+    return Integer.toString(safe1);
   }
 
   @Override
   public String part2() {
-    return "";
+    reports.stream().forEach(report -> {
+      if (isSafe(report)) {
+        safe2++;
+      } else {
+        for (int i = 0; i < report.size(); i++) {
+          List<Integer> modifiedReport = new ArrayList<>(report);
+          modifiedReport.remove(i);
+          if (isSafe(modifiedReport)) {
+            safe2++;
+            break;
+          }
+        }
+      }
+    });
+    return Integer.toString(safe2);
+  }
+
+  private boolean isSafe(List<Integer> report) {
+    boolean change = report.get(1) - report.get(0) > 0;
+    for (int i = 0; i < report.size() - 1; i++) {
+      int diff = report.get(i + 1) - report.get(i);
+      boolean currChange = diff > 0;
+      diff = Math.abs(diff);
+      if (currChange != change || diff < 1 || diff > 3) {
+        return false;
+      }
+    }
+    return true;
   }
 }
