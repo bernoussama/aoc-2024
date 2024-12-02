@@ -46,3 +46,12 @@ compileJava {
     options.release = 17
 }
 
+// run {
+//   standardInput = System.in
+// }
+
+task customRun(type: JavaExec) {
+  classpath = sourceSets.main.runtimeClasspath
+  standardInput = System.in
+  main = "com.bernoussama.aoc2024.Main"
+}
