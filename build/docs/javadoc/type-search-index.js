@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.bernoussama.aoc2024","l":"Day"},{"p":"com.bernoussama.aoc2024","l":"Day01"},{"p":"com.bernoussama.aoc2024","l":"Main"}];updateSearchResults();

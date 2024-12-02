@@ -1,0 +1,10 @@
+-classpath '/home/oussama/personal/aoc-2024/build/classes/java/main:/home/oussama/personal/aoc-2024/build/resources/main'
+-d '/home/oussama/personal/aoc-2024/build/docs/javadoc'
+-doctitle 'aoc2024 1.0 API'
+-encoding 'UTF-8'
+-notimestamp 
+-quiet 
+-windowtitle 'aoc2024 1.0 API'
+'/home/oussama/personal/aoc-2024/src/main/java/com/bernoussama/aoc2024/Main.java'
+'/home/oussama/personal/aoc-2024/src/main/java/com/bernoussama/aoc2024/Day01.java'
+'/home/oussama/personal/aoc-2024/src/main/java/com/bernoussama/aoc2024/Day.java'

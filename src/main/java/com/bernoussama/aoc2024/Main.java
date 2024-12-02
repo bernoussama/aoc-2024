@@ -19,7 +19,6 @@ public class Main {
     int day = Integer.parseInt(args[0]);
     String file = String.format("Day%02d%s.txt", day, test.toString());
     Path filename = Paths.get(file);
-    // int day = Integer.parseInt(args[0].split("Day")[1].split(".txt")[0]);
     try {
       Day daySolver = getDay(day, filename);
       String part1 = daySolver.part1();
@@ -35,7 +34,7 @@ public class Main {
   private static Day getDay(int day, Path filename) throws Exception {
     return switch (day) {
       case 1 -> new Day01(filename);
-      // case 2 -> new Day02(filename);
+      case 2 -> new Day02(filename);
       default ->
         throw new Exception(String.format("Day %d has not been solved yet, or it is invalid.", day));
     };
