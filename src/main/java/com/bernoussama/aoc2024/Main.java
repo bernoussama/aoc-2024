@@ -36,6 +36,7 @@ public class Main {
       case 1 -> new Day01(filename);
       case 2 -> new Day02(filename);
       case 3 -> new Day03(filename);
+      case 4 -> new Day04(filename);
       default ->
         throw new Exception(String.format("Day %d has not been solved yet, or it is invalid.", day));
     };
