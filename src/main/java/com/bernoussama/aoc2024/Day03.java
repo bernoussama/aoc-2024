@@ -24,7 +24,7 @@ public class Day03 implements Day {
 
   @Override
   public String part1() {
-    return mult(content).toString();
+    return multSum(content).toString();
   }
 
   @Override
@@ -36,31 +36,25 @@ public class Day03 implements Day {
     Pattern doPattern = Pattern.compile("do(n't)?\\(\\)");
     Matcher matcher = doPattern.matcher(content);
     while (matcher.find()) {
-      System.out.println(matcher.group());
       if (matcher.group(1) != null) {
         // don't match
-        System.out.printf("\"%s\"\n", matcher.group(1));
         if (doMatch)
           idxs.add(matcher.start() - 1);
         doMatch = false;
         continue;
       }
-
-      System.out.printf("start: %d, end: %d\n", matcher.start(), matcher.end());
       if (!doMatch)
         idxs.add(matcher.end());
       doMatch = true;
     }
-    System.out.println(idxs);
     idxs.add(content.length() - 1);
     for (int i = 0; i <= idxs.size() - 1; i += 2) {
-      System.out.println(content.substring(idxs.get(i), idxs.get(i + 1)));
-      parts.add(content.substring(idxs.get(i), idxs.get(i + 1)));
+      parts.add(content.substring(idxs.get(i), idxs.get(i + 1) + 1));
     }
-    return parts.stream().map(part -> mult(part)).reduce(0L, (acc, el) -> acc + el).toString();
+    return parts.stream().map(part -> multSum(part)).reduce(0L, (acc, el) -> acc + el).toString();
   }
 
-  private Long mult(String input) {
+  private Long multSum(String input) {
     Pattern pattern = Pattern.compile("(mul\\()(\\d+),(\\d+)(\\))");
     Matcher matcher = pattern.matcher(input);
     List<List<Long>> result = new ArrayList<>();
