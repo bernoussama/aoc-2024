@@ -30,27 +30,25 @@ public class Day03 implements Day {
   @Override
   public String part2() {
     List<String> parts = new ArrayList<>();
-    List<Integer> idxs = new ArrayList<>();
+    Integer lastIdx = 0;
     boolean doMatch = true;
-    idxs.add(0);
     Pattern doPattern = Pattern.compile("do(n't)?\\(\\)");
     Matcher matcher = doPattern.matcher(content);
     while (matcher.find()) {
       if (matcher.group(1) != null) {
         // don't match
-        if (doMatch)
-          idxs.add(matcher.start() - 1);
+        if (doMatch) {
+          parts.add(content.substring(lastIdx, matcher.start()));
+        }
         doMatch = false;
         continue;
       }
-      if (!doMatch)
-        idxs.add(matcher.end());
+      if (!doMatch) {
+        lastIdx = matcher.end();
+      }
       doMatch = true;
     }
-    idxs.add(content.length() - 1);
-    for (int i = 0; i <= idxs.size() - 1; i += 2) {
-      parts.add(content.substring(idxs.get(i), idxs.get(i + 1) + 1));
-    }
+    parts.add(content.substring(lastIdx, content.length()));
     return parts.stream().map(part -> multSum(part)).reduce(0L, (acc, el) -> acc + el).toString();
   }
 
